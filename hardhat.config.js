@@ -5,6 +5,7 @@ require("@nomiclabs/hardhat-etherscan");
 INFURA_API_KEY= "https://goerli.infura.io/v3/2937bccb5df24a28ae44922f1e485bfb"
 ETHERSCAN_API_KEY="6476GM32XKH36MBSDA98CTAIR8E9HSUPXA"
 PRI_KEY="METAMASKPRIVATEKEY"
+//test push
 module.exports = {
   solidity: "0.8.10",
   networks: {

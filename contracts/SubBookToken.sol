@@ -41,7 +41,7 @@ contract SubBookToken is
     }
 
     function sendRewards(
-        address payable[] memory _to,
+        address payable[] memory investors,
         uint256 bookIpToken,
         address payable broker
     ) external payable onlyOwner {
@@ -54,11 +54,11 @@ contract SubBookToken is
         uint256 rewardToDistribute = value - percentOf5;
         (bool sent, bytes memory data) = broker.call{value: percentOf5}("");
         require(sent, "Failed to send Ether");
-        for (uint256 i = 0; i < _to.length; i++) {
+        for (uint256 i = 0; i < investors.length; i++) {
             uint256 reward = (rewardToDistribute *
-                balanceOf(_to[i], bookIpToken)) / TOKENS_PER_BOOK;
+                balanceOf(investors[i], bookIpToken)) / TOKENS_PER_BOOK;
 
-            (bool sent, bytes memory data) = _to[i].call{value: reward}("");
+            (bool sent, bytes memory data) = investors[i].call{value: reward}("");
             require(sent, "Failed to send Ether");
         }
     }
